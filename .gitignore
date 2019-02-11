@@ -1,3 +1,22 @@
+##########################
+# Unreal Generated Files #
+##########################
+**/Build
+**/Binaries
+**/DerivedDataCache
+**/Intermediate
+**/Saved
+BuildingEscape/Content/StarterContent/
+
+######################
+# VS Generated Files #
+######################
+*.VC.db
+
+#################################################################################
+# ABOVE IS UNREAL UDEMY COURSE GITIGNORE AND BELOW IS UNREAL TEMPLATE GITIGNORE #
+#################################################################################
+
 # Visual Studio 2015 user specific files
 .vs/
 
