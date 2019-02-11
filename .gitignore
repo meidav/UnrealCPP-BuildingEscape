@@ -13,6 +13,13 @@ BuildingEscape/Content/StarterContent/
 ######################
 *.VC.db
 
+###############
+# XCode Stuff #
+###############
+**/xcuserdata
+
+
+
 #################################################################################
 # ABOVE IS UNREAL UDEMY COURSE GITIGNORE AND BELOW IS UNREAL TEMPLATE GITIGNORE #
 #################################################################################
