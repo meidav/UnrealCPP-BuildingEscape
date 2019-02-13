@@ -26,16 +26,17 @@ void UGrabber::BeginPlay()
     PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
     if (PhysicsHandle) {
         /// found physics handle
-        UE_LOG(LogTemp,Warning,TEXT("Yay - found the physics handle component for %s"), *GetOwner()->GetName());
+        /// UE_LOG(LogTemp,Warning,TEXT("Yay - found the physics handle component for %s"), *GetOwner()->GetName());
     } else {
         UE_LOG(LogTemp,Error,TEXT("%s missing physics handle component"), *GetOwner()->GetName());
     }
     
     InputComponent = GetOwner()->FindComponentByClass<UInputComponent>();
     if (InputComponent) {
-        UE_LOG(LogTemp,Warning,TEXT("Yay - found the input component for %s"), *GetOwner()->GetName());
+        /// UE_LOG(LogTemp,Warning,TEXT("Yay - found the input component for %s"), *GetOwner()->GetName());
         /// bind the input axis
         InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
+        InputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Release);
     } else {
         UE_LOG(LogTemp,Error,TEXT("%s missing input component"), *GetOwner()->GetName());
     }
@@ -56,17 +57,17 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
     );
     
     FVector LineTraceEnd = PlayerViewPointLocation + PlayerViewPointRotation.Vector() * Reach;
-    DrawDebugLine(
-        GetWorld(),
-        PlayerViewPointLocation,
-        LineTraceEnd,
-        FColor(10,0,230),
-        false,
-        0.f,
-        0.f,
-        10.f
-    );
-    
+//    DrawDebugLine(
+//        GetWorld(),
+//        PlayerViewPointLocation,
+//        LineTraceEnd,
+//        FColor(10,0,230),
+//        false,
+//        0.f,
+//        0.f,
+//        10.f
+//    );
+//
     /// Setup query params
     FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
     /// LineTrace (aka ray-cast) out to reach distance
@@ -82,7 +83,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
     /// see what we hit
     AActor* ActorHit = Hit.GetActor();
     if (ActorHit) {
-        UE_LOG(LogTemp,Warning,TEXT("I am hitting this thing: %s"), *(ActorHit->GetName()));
+        //UE_LOG(LogTemp,Warning,TEXT("I am hitting this thing: %s"), *(ActorHit->GetName()));
     }
 }
 
@@ -91,3 +92,7 @@ void UGrabber::Grab()
     UE_LOG(LogTemp,Warning,TEXT("Grabbed by %s"), *GetOwner()->GetName());
 }
 
+void UGrabber::Release()
+{
+    UE_LOG(LogTemp,Warning,TEXT("Released by %s"), *GetOwner()->GetName());
+}
