@@ -35,8 +35,22 @@ private:
     
     /// ray-cast and grab what's in reach
     void Grab();
+    
+    /// called when grab is released
     void Release();
+    
+    /// find (assumed) attached physics handle
     void FindPhysicsHandleComponent();
+    
+    /// setup (assumed) attached input component
     void SetupInputComponent();
+    
+    /// return hit result for physics body in reach
     FHitResult GetFirstPhysicsBodyInReach() const;
+    
+    /// get current start of reach line
+    FVector GetReachLineStart() const;
+    
+    /// get current end of reach line
+    FVector GetReachLineEnd() const;
 };
