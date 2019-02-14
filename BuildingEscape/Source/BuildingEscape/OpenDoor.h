@@ -27,12 +27,12 @@ public:
 
 private:
     UPROPERTY(EditAnywhere) float OpenAngle = -90.f;
-    UPROPERTY(EditAnywhere) ATriggerVolume* PressurePlate;
+    UPROPERTY(EditAnywhere) ATriggerVolume* PressurePlate = nullptr;
     UPROPERTY(EditAnywhere) float DoorCloseDelay = 1.f;
     UPROPERTY(EditAnywhere) float MassOnPlateToOpen = 30.f;
     float LastDoorOpenTime;
     
-    AActor* Owner; // the owning door
+    AActor* Owner = nullptr; // the owning door
     
     void OpenTheDoor();
     void CloseTheDoor();
