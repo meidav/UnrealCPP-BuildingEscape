@@ -45,18 +45,15 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 void UOpenDoor::OpenTheDoor()
 {
     // set the door rotation
-    Owner->SetActorRotation(FRotator(0.f, OpenAngle, 0.f));
+    //Owner->SetActorRotation(FRotator(0.f, OpenAngle, 0.f));
     
-    //UE_LOG(LogTemp,Warning,TEXT("Opening The Door!!!"));
-    
+    OnOpenRequest.Broadcast();
 }
 
 void UOpenDoor::CloseTheDoor()
 {
     // set the door rotation
     Owner->SetActorRotation(FRotator(0.f, 0.f, 0.f));
-    
-    //UE_LOG(LogTemp,Warning,TEXT("Opening The Door!!!"));
     
 }
 
