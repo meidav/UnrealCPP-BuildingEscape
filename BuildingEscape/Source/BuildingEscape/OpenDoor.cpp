@@ -31,23 +31,11 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-    if (GetTotalMassOfActorsOnPlate() > MassOnPlateToOpen) { // TODO: make the mass to trigger a parameter later
-        OpenTheDoor();
+    if (GetTotalMassOfActorsOnPlate() > MassOnPlateToOpen) { 
+        OnOpen.Broadcast();
     } else {
-        CloseTheDoor();
+        OnClose.Broadcast();
     }
-}
-
-void UOpenDoor::OpenTheDoor()
-{
-    OnOpen.Broadcast();
-}
-
-void UOpenDoor::CloseTheDoor()
-{
-    // set the door rotation
-    //Owner->SetActorRotation(FRotator(0.f, 0.f, 0.f));
-    OnClose.Broadcast();
 }
 
 float UOpenDoor::GetTotalMassOfActorsOnPlate()

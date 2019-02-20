@@ -28,8 +28,6 @@ public:
     
     UPROPERTY(BlueprintAssignable) FDoorEvent OnOpen;
     UPROPERTY(BlueprintAssignable) FDoorEvent OnClose;
-    void OpenTheDoor();
-    void CloseTheDoor();
     
 private:
     UPROPERTY(EditAnywhere) ATriggerVolume* PressurePlate = nullptr;
